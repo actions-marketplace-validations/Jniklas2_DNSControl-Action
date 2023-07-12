@@ -18,10 +18,9 @@ ARGS=(
 # 'check' sub-command doesn't require credentials
 if [ "$1" != "check" ]; then
     ARGS+=(--creds "$CREDS_ABS_PATH")
-fi
-
-if [ $ALLOW_FETCH -a "$1" 1= "check" ]; then
-    ARGS+=(--allow-fetch)
+   if [ "$ALLOW_FETCH" = true ]; then
+       ARGS+=(--allow-fetch)
+   fi
 fi
 
 IFS=
