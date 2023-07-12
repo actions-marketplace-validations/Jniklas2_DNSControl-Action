@@ -1,24 +1,12 @@
-FROM alpine:3.17.2@sha256:69665d02cb32192e52e07644d76bc6f25abeb5410edc1c7a81a10ba3f0efb90a
+FROM stackexchange/dnscontrol:4.1.1@sha256:feff4aad97c8d9ed9e1a8fd34da4c2cdb30dade9746e2dbb5f96832531fbd206
 
-LABEL repository="https://github.com/koenrh/dnscontrol-action"
-LABEL maintainer="Koen Rouwhorst <info@koenrouwhorst.nl>"
+LABEL repository="https://github.com/Jniklas2/DNSControl-Action"
+LABEL maintainer="Jniklas2 <github@sl.crcr.tech>"
 
 LABEL "com.github.actions.name"="DNSControl"
 LABEL "com.github.actions.description"="Deploy your DNS configuration to multiple providers."
 LABEL "com.github.actions.icon"="cloud"
 LABEL "com.github.actions.color"="yellow"
-
-ENV DNSCONTROL_VERSION="3.31.4"
-ENV DNSCONTROL_CHECKSUM="054d236531df2674c9286279596f88f02c1cf7b1448dc5f643f1a1dbe705fe8d"
-
-RUN apk -U --no-cache upgrade && \
-    apk add --no-cache bash ca-certificates curl libc6-compat
-
-RUN curl -sL "https://github.com/StackExchange/dnscontrol/releases/download/v$DNSCONTROL_VERSION/dnscontrol-Linux" \
-  -o dnscontrol && \
-  echo "$DNSCONTROL_CHECKSUM  dnscontrol" | sha256sum -c - && \
-  chmod +x dnscontrol && \
-  mv dnscontrol /usr/local/bin/dnscontrol
 
 RUN ["dnscontrol", "version"]
 
