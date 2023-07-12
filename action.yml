@@ -17,6 +17,10 @@ inputs:
     description: Path to DNSControl credentials file.
     required: false
     default: 'creds.json'
+  allow_fetch:
+    description: Enable the fetch function.
+    required: false
+    default: false
 outputs:
   output:
     description: The output of the dnscontrol command that was executed.
