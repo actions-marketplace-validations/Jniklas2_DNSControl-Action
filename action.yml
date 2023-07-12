@@ -1,7 +1,7 @@
 ---
 name: DNSControl Action
 description: Deploy your DNS configuration to multiple providers
-author: Koen Rouwhorst <info@koenrouwhorst.nl>
+author: Jniklas2 <github@sl.crcr.tech>
 branding:
   icon: cloud
   color: yellow

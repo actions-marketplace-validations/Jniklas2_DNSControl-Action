@@ -5,6 +5,7 @@ set -o pipefail
 # Resolve to full paths
 CONFIG_ABS_PATH="$(readlink -f "${INPUT_CONFIG_FILE}")"
 CREDS_ABS_PATH="$(readlink -f "${INPUT_CREDS_FILE}")"
+ALLOW_FETCH=${INPUT_ALLOW_FETCH:-false}
 
 WORKING_DIR="$(dirname "${CONFIG_ABS_PATH}")"
 cd "$WORKING_DIR" || exit
@@ -17,6 +18,10 @@ ARGS=(
 # 'check' sub-command doesn't require credentials
 if [ "$1" != "check" ]; then
     ARGS+=(--creds "$CREDS_ABS_PATH")
+fi
+
+if [ $ALLOW_FETCH -a "$1" 1= "check" ]; then
+    ARGS+=(--allow-fetch)
 fi
 
 IFS=
